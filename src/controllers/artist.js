@@ -43,30 +43,35 @@ exports.getArtistById = async (req, res) => {
   }
 };
 
-exports.updateArtist1 = async (req, res) => {
-  const { id } = req.params;
-  const { name, genre } = req.body;
+// PUT artist : ------->
 
-  try {
-    const {
-      rows: [artist],
-    } = await db.query(
-      'UPDATE Artists SET name = $1, genre = $2 WHERE id = $3 RETURNING *',
-      [name, genre, id]
-    );
+// exports.updateArtist1 = async (req, res) => {
+//   const { id } = req.params;
+//   const { name, genre } = req.body;
 
-    if (!artist) {
-      return res.status(404).json({ message: `artist ${id} does not exist` });
-    }
+//   try {
+//     const {
+//       rows: [artist],
+//     } = await db.query(
+//       'UPDATE Artists SET name = $1, genre = $2 WHERE id = $3 RETURNING *',
+//       [name, genre, id]
+//     );
 
-    res.status(200).json(artist);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err.message);
-  }
-};
+//     if (!artist) {
+//       return res.status(404).json({ message: `artist ${id} does not exist` });
+//     }
 
-exports.updateArtist2 = async (req, res) => {
+//     res.status(200).json(artist);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err.message);
+//   }
+// };
+
+
+// PATCH artist: ------->
+
+exports.updateArtist = async (req, res) => {
   const { name, genre } = req.body;
   const { id } = req.params;
 

@@ -1,9 +1,10 @@
 const express = require('express');
 const { 
-    
+
     createArtist,
     readArtist,
-    getArtistById 
+    getArtistById, 
+    updateArtist,
 } = 
 require('../controllers/artist');
 
@@ -15,6 +16,8 @@ router.post('/', createArtist);
 router.get('/', readArtist);
 
 router.get('/:id', getArtistById);
+
+router.patch('/:id', updateArtist)
 
 
 module.exports = router;
