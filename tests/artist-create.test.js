@@ -12,6 +12,9 @@
            genre: 'rock',
          });
 
+         console.log('REQ STATUS  ', status);
+         console.log('REQ body  ', body);
+         
          expect(status).to.equal(201);
          expect(body.name).to.equal('Tame Impala');
          expect(body.genre).to.equal('rock');

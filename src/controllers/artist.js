@@ -1,5 +1,6 @@
 const db = require('../db/index');
 
+
 exports.createArtist = async (req, res) => {
   const { name, genre } = req.body;
 
@@ -16,3 +17,11 @@ exports.createArtist = async (req, res) => {
   }
 };
 
+exports.readArtist = async (_req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM Artists');
+    res.status(200).json(rows);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+};
